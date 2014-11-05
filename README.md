@@ -11,12 +11,18 @@ Docker containers to run Symfony2 applications.
 ## Usage
 
 ```
+$ docker run --name data hellslicer/symfony2-full:data
+
+$ docker run --volumes-from data --name mysql hellslicer/symfony2-full:mysql
+
+$ docker run -v $(pwd):/srv --name php hellslicer/symfony2-full:php
+
 $ docker run -d -p 80:80 \
     -v $(pwd):/srv \
     -link	php:php	\
     -link	mysql:mysql	\
     -e INIT=bin/reload \
-    hellslicer/symfony2-full:nginx
+    hellslicer/symfony2-full:latest
 ```
 
 ## Parameters
