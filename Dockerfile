@@ -5,3 +5,4 @@ RUN apt-get update && apt-get install -y git && rm -r /var/lib/apt/lists/* \
  && docker-php-ext-enable xdebug \
  && git clone https://github.com/phpredis/phpredis.git && cd phpredis && git checkout php7 && phpize && ./configure && make && make install && rm -rf phpredis \
  && docker-php-ext-enable redis
+WORKDIR /srv
