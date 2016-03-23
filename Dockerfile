@@ -1,7 +1,7 @@
 FROM php:7.0-fpm
 
-RUN apt-get update && apt-get install -y git && rm -r /var/lib/apt/lists/* \
- && docker-php-ext-install -j$(nproc) opcache json mysqli pdo_mysql \
+RUN apt-get update && apt-get install -y git zlib1g-dev && rm -r /var/lib/apt/lists/* \
+ && docker-php-ext-install -j$(nproc) opcache json mysqli pdo_mysql zip \
  && pecl install xdebug \
  && docker-php-ext-enable xdebug \
  && git clone https://github.com/phpredis/phpredis.git && cd phpredis && git checkout php7 && phpize && ./configure && make && make install && rm -rf phpredis \
