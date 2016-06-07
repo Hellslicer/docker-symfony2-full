@@ -5,7 +5,8 @@ RUN apk add --update alpine-sdk bash acl rsync gcc autoconf \
  && pecl install xdebug \
  && docker-php-ext-enable xdebug \
  && git clone https://github.com/phpredis/phpredis.git && cd phpredis && git checkout php7 && phpize && ./configure && make && make install && rm -rf phpredis \
- && docker-php-ext-enable redis
+ && docker-php-ext-enable redis \
+ && apk del alpine-sdk gcc autoconf
 
 # Composer and PHPUnit
 ENV COMPOSER_HOME /root/composer
